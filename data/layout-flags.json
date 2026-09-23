@@ -1,0 +1,199 @@
+{
+ "provenance": {
+  "exportSource": "26.0.2",
+  "measured": "2026-09-23"
+ },
+ "note": "Bits in a <Layout> element's own <Options> integer. 36 bits wide, so it needs 64-bit arithmetic to read.",
+ "count": 27,
+ "flags": [
+  {
+   "group": "layout",
+   "key": "delineateCurrentRecordOnly",
+   "bit": 0,
+   "mask": 1,
+   "inverted": false
+  },
+  {
+   "group": "viewStyles.enabled",
+   "key": "form",
+   "bit": 1,
+   "mask": 2,
+   "inverted": true
+  },
+  {
+   "group": "viewStyles.enabled",
+   "key": "list",
+   "bit": 2,
+   "mask": 4,
+   "inverted": true
+  },
+  {
+   "group": "viewStyles.enabled",
+   "key": "table",
+   "bit": 3,
+   "mask": 8,
+   "inverted": true
+  },
+  {
+   "group": "layout",
+   "key": "saveRecordChangesAutomatically",
+   "bit": 4,
+   "mask": 16,
+   "inverted": true
+  },
+  {
+   "group": "layout",
+   "key": "showFieldFramesWhenActive",
+   "bit": 5,
+   "mask": 32,
+   "inverted": false
+  },
+  {
+   "group": "printing",
+   "key": "facingPages",
+   "bit": 7,
+   "mask": 128,
+   "inverted": false
+  },
+  {
+   "group": "layout",
+   "key": "verticalPartLabels",
+   "bit": 11,
+   "mask": 2048,
+   "inverted": false
+  },
+  {
+   "group": "layout",
+   "key": "textRuler",
+   "bit": 12,
+   "mask": 4096,
+   "inverted": false
+  },
+  {
+   "group": "layout",
+   "key": "showFieldAlerts",
+   "bit": 13,
+   "mask": 8192,
+   "inverted": false
+  },
+  {
+   "group": "layout",
+   "key": "quickFind",
+   "bit": 15,
+   "mask": 32768,
+   "inverted": true
+  },
+  {
+   "group": "tableView",
+   "key": "horizontalGrid",
+   "bit": 16,
+   "mask": 65536,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "verticalGrid",
+   "bit": 17,
+   "mask": 131072,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "includeHeader",
+   "bit": 18,
+   "mask": 262144,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "includeFooter",
+   "bit": 19,
+   "mask": 524288,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "columnHeaders",
+   "bit": 20,
+   "mask": 1048576,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "resizableColumns",
+   "bit": 21,
+   "mask": 2097152,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "reorderableColumns",
+   "bit": 22,
+   "mask": 4194304,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "sortOnSelect",
+   "bit": 23,
+   "mask": 8388608,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "customColumnOrder",
+   "bit": 26,
+   "mask": 67108864,
+   "inverted": false
+  },
+  {
+   "group": "layout",
+   "key": "showCurrentRecordIndicator",
+   "bit": 28,
+   "mask": 268435456,
+   "inverted": true
+  },
+  {
+   "group": "tableView",
+   "key": "includeTopNav",
+   "bit": 29,
+   "mask": 536870912,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "includeBottomNav",
+   "bit": 30,
+   "mask": 1073741824,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "systemAppearance",
+   "bit": 32,
+   "mask": 4294967296,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "comfortableFormatting",
+   "bit": 33,
+   "mask": 8589934592,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "alternatingRowColors",
+   "bit": 34,
+   "mask": 17179869184,
+   "inverted": false
+  },
+  {
+   "group": "tableView",
+   "key": "rowNumbers",
+   "bit": 35,
+   "mask": 34359738368,
+   "inverted": false
+  }
+ ]
+}

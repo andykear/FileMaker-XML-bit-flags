@@ -1,0 +1,340 @@
+{
+ "provenance": {
+  "exportSource": "26.0.2",
+  "measured": "2026-09-21",
+  "note": "The Source attribute an export carries in its FMSaveAsXML header."
+ },
+ "note": "A <LayoutObject> carries up to seven packed integers as <Options> ELEMENTS at different depths, and a PopoverPanel additionally carries an Options ATTRIBUTE on its own tag. 805306368 on the object itself is anchors.left + anchors.top and nothing else.",
+ "count": 41,
+ "flags": [
+  {
+   "path": "LayoutObject",
+   "bit": 1,
+   "mask": 2,
+   "key": "locked",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 4,
+   "mask": 16,
+   "key": "slideUp",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 5,
+   "mask": 32,
+   "key": "slideLeft",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 6,
+   "mask": 64,
+   "key": "resizeEnclosingPart",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 8,
+   "mask": 256,
+   "key": "applyInFindMode",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 9,
+   "mask": 512,
+   "key": "hideWhenPrinting",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 16,
+   "mask": 65536,
+   "key": "showHandCursor",
+   "objectType": "button",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 28,
+   "mask": 268435456,
+   "key": "anchors.left",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 29,
+   "mask": 536870912,
+   "key": "anchors.top",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 30,
+   "mask": 1073741824,
+   "key": "anchors.right",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject",
+   "bit": 31,
+   "mask": 2147483648,
+   "key": "anchors.bottom",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/ExtendedAttributes/Formatting/Graphic",
+   "bit": 2,
+   "mask": 4,
+   "key": "maintainOriginalProportions",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/ExtendedAttributes/Formatting/Graphic",
+   "bit": 9,
+   "mask": 512,
+   "key": "autoPlay",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/ExtendedAttributes/Formatting/Graphic",
+   "bit": 10,
+   "mask": 1024,
+   "key": "preservePdfTransparency",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/ExtendedAttributes/Formatting/Graphic",
+   "bit": 11,
+   "mask": 2048,
+   "key": "noContextMenu",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/External",
+   "bit": 0,
+   "mask": 1,
+   "key": "allowInteraction",
+   "objectType": "webViewer",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/External",
+   "bit": 1,
+   "mask": 2,
+   "key": "displayInFindMode",
+   "objectType": "webViewer",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/External",
+   "bit": 2,
+   "mask": 4,
+   "key": "showProgressBar",
+   "objectType": "webViewer",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/External",
+   "bit": 3,
+   "mask": 8,
+   "key": "showStatusMessages",
+   "objectType": "webViewer",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/External",
+   "bit": 5,
+   "mask": 32,
+   "key": "encodeUrl",
+   "objectType": "webViewer",
+   "inverted": true
+  },
+  {
+   "path": "LayoutObject/External",
+   "bit": 6,
+   "mask": 64,
+   "key": "allowJavaScriptToPerformScripts",
+   "objectType": "webViewer",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 0,
+   "mask": 1,
+   "key": "allowEntryOfOtherValues",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 1,
+   "mask": 2,
+   "key": "selectContentsOnEntry",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 3,
+   "mask": 8,
+   "key": "allowEditingOfValueList",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 5,
+   "mask": 32,
+   "key": "exitOnTab",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 6,
+   "mask": 64,
+   "key": "exitOnReturn",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 7,
+   "mask": 128,
+   "key": "exitOnEnter",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 8,
+   "mask": 256,
+   "key": "showVerticalScrollBar",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 10,
+   "mask": 1024,
+   "key": "includeShowHideIcon",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 11,
+   "mask": 2048,
+   "key": "autoComplete",
+   "objectType": "field",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 13,
+   "mask": 8192,
+   "key": "applyVisualSpellChecking",
+   "objectType": "field",
+   "inverted": true
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 15,
+   "mask": 32768,
+   "key": "quickFind",
+   "objectType": "field",
+   "inverted": true
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 16,
+   "mask": 65536,
+   "key": "showPlaceholderInFindMode",
+   "objectType": "field",
+   "inverted": true
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 20,
+   "mask": 1048576,
+   "key": "overrideDataFormattingWithValueList",
+   "objectType": "field",
+   "inverted": true
+  },
+  {
+   "path": "LayoutObject/Portal",
+   "bit": 0,
+   "mask": 1,
+   "key": "allowVerticalScrolling",
+   "objectType": "portal",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Portal",
+   "bit": 2,
+   "mask": 4,
+   "key": "allowDelete",
+   "objectType": "portal",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject/Portal",
+   "bit": 4,
+   "mask": 16,
+   "key": "resetScrollBarOnExit",
+   "objectType": "portal",
+   "inverted": true
+  },
+  {
+   "path": "LayoutObject/SlideControl",
+   "bit": 0,
+   "mask": 1,
+   "key": "showNavigationDots",
+   "objectType": "slideControl",
+   "inverted": true
+  },
+  {
+   "path": "LayoutObject/SlideControl",
+   "bit": 1,
+   "mask": 2,
+   "key": "enableSwipeGestures",
+   "objectType": "slideControl",
+   "inverted": true
+  },
+  {
+   "path": "LayoutObject/TabControl",
+   "bit": 8,
+   "mask": 256,
+   "key": "tabsShareSingleStyle",
+   "objectType": "tabControl",
+   "inverted": false
+  },
+  {
+   "path": "LayoutObject@Options",
+   "bit": 1,
+   "mask": 2,
+   "key": "showTitleBar",
+   "objectType": "popover",
+   "inverted": true,
+   "note": "An ATTRIBUTE on the <LayoutObject> tag, not the <Options> element inside it. Only PopoverPanel objects carry it."
+  }
+ ]
+}

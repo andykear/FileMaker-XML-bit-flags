@@ -1,0 +1,42 @@
+{
+ "provenance": {
+  "exportSource": "26.0.2",
+  "measured": "2026-09-23"
+ },
+ "note": "Bits in the Options attribute on a layout part's <Definition>. The two rowState settings (useAlternate, useActive) move no bit and are stored elsewhere.",
+ "count": 4,
+ "flags": [
+  {
+   "group": "pagination",
+   "key": "breakBefore",
+   "bit": 0,
+   "mask": 1,
+   "inverted": false
+  },
+  {
+   "group": "pagination",
+   "key": "restartPageNumbers",
+   "bit": 2,
+   "mask": 4,
+   "inverted": false
+  },
+  {
+   "group": "pagination",
+   "key": "allowBreakAcrossPages",
+   "bit": 6,
+   "mask": 64,
+   "inverted": false
+  },
+  {
+   "group": "pagination",
+   "key": "discardRemainder",
+   "bit": 8,
+   "mask": 256,
+   "inverted": false
+  }
+ ],
+ "notInThisInteger": [
+  "rowState.useAlternate",
+  "rowState.useActive"
+ ]
+}
