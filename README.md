@@ -77,12 +77,34 @@ accounted for, and are listed rather than omitted.
 
 Exports carrying `Source="26.0.2"`.
 
-## Related
+---
 
-The other specifications in this collection cover the **clipboard** format
-(`fmxmlsnippet`): script steps, layout objects, and field and table definitions. This one
-covers the **export** format (`FMSaveAsXML`), which is a different serialisation of the same
-settings and does not share their vocabulary.
+## The rest of the collection
+
+**[Menu](https://github.com/andykear)**
+
+**Reference skills**
+
+**[FileMaker Second Opinion](https://github.com/andykear/FileMaker-second-opinion)**\
+**[FileMaker AI Vocabulary](https://github.com/andykear/FileMaker-AI-vocabulary)**
+
+**Research / Specialist**
+
+**[FileMaker XML bit-flags](https://github.com/andykear/FileMaker-XML-bit-flags)** (SaXML)\
+**[FileMaker AI Grammar](https://github.com/andykear/FileMaker-AI-grammar)**
+
+**Generation, paste-ready FileMaker XML**
+
+**[Script XML Skill](https://github.com/andykear/FileMaker-XMLsnippet-Claude-Skill)** (XMSS, XMSC, XMFN)\
+**[Layout XML Skill](https://github.com/andykear/FileMaker-XMLsnippet-Layout-Claude-Skill)** (XML2)\
+**[Field, Table & Value List Definitions](https://github.com/andykear/FileMaker-XML-field-definitions)** (XMFD, XMTB, XMVL)
+
+**Analyse a FileMaker solution in your browser**
+
+**[Clockwork Inspector](https://github.com/andykear/FileMaker-XML-inspector-open-source)** (SaXML)\
+**[XML Scrubber](https://github.com/andykear/FileMaker-XML-scrubber)** (SaXML + others)
+
+---
 
 ## Licence
 
