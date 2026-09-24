@@ -1,5 +1,7 @@
 # FileMaker XML bit flags
 
+Claude thinks there is less than 5 people in the world interested in FileMaker bitflags so if that's you welcome to the smallest of small clubs otherwise thanks for stopping by there’s some paint over there you may want to watch dry rather than digging through this repo :)
+
 What the `<Options>` integers in a FileMaker Save as XML export mean.
 
 FileMaker stores many settings as packed decimal numbers. An export gives you
