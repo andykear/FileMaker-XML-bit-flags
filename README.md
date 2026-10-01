@@ -11,20 +11,20 @@ FileMaker stores many settings as packed decimal numbers. An export gives you
 
 | File | Rows | Covers |
 |---|---:|---|
-| `data/step-flags.json` | 161 | Script step `<Options>`, 99 step types |
+| `data/step-flags.json` | 164 | Script step `<Options>`, 102 step types |
 | `data/layout-flags.json` | 27 | A layout's own `<Options>`, 36 bits wide |
-| `data/layout-object-flags.json` | 41 | `<LayoutObject>`, its six nested integers, and a popover's own attribute |
+| `data/layout-object-flags.json` | 43 | `<LayoutObject>`, its six nested integers, and a popover's own attribute |
 | `data/part-flags.json` | 4 | The `Options` attribute on a part's `<Definition>` |
 | `references/*.md` | | The same, as tables |
 | `SKILL.md` | | Rules for decoding correctly |
 
-233 flags in total.
+238 flags in total.
 
 ## Five facts
 
 **A layout object holds seven packed integers, not one.** Its own, plus separate ones inside
 `Field`, `Portal`, `External`, `SlideControl`, `TabControl` and
-`ExtendedAttributes/Formatting/Graphic`. Reading only the outermost finds 11 of 41 properties.
+`ExtendedAttributes/Formatting/Graphic`. Reading only the outermost finds 11 of 43 properties.
 `quickFind` is in the one inside `Field`. A popover panel carries an eighth value as an
 `Options=` attribute on its own tag rather than as an element.
 
@@ -39,6 +39,13 @@ Records/Requests and `createFolders` on Export Records. Look up by `stepID`.
 the value every new layout carries, and all twelve of its set bits are accounted for: the
 table view grid, headers, column behaviour and row formatting, plus vertical part labels and
 delineate-current-record-only.
+
+**So a JavaScript bitwise test cannot read it.** `&`, `>>` and `|` coerce to 32 bits, which
+silently drops bits 32 to 35 — `tableView.systemAppearance`, `comfortableFormatting`,
+`alternatingRowColors` and `rowNumbers`, four of the twenty-seven. The failure is quiet: the
+remaining bits still decode, so the value looks read. Use `Math.floor(value / 2 ** bit) % 2`,
+which is exact to 2^53, or `BigInt`. Found the hard way while fixing a consumer that reported
+every layout's view settings wrong.
 
 **`805306368` on a layout object is `anchors.left` plus `anchors.top`** and nothing else. An
 object with no anchors carries `0`.
@@ -68,7 +75,7 @@ Clipboard XML (`<fmxmlsnippet>`) has no packed integer. Each flag is a named ele
 ✓ **round-trip tested.** Every row was produced by setting the property, reading the integer
 back, and recording which bit moved.
 
-◎ **observed in native exports.** 121 of the step rows are independently confirmed by
+◎ **observed in native exports.** 124 of the step rows are independently confirmed by
 FileMaker's own output. Every export writes `<Boolean type="With dialog" id="128">` inside a
 step's `ParameterValues`, where `id` is the mask and `type` is FileMaker's wording. Across 171
 unrelated exports, every mask stated that way is a single power of two, and all 120 that
