@@ -1,13 +1,25 @@
 {
  "provenance": {
   "exportSource": "26.0.2",
-  "measured": "2026-09-21",
+  "measured": "2026-10-01",
   "note": "The Source attribute an export carries in its FMSaveAsXML header.",
-  "labelsHarvestedFrom": "171 Save as XML exports"
+  "labelsHarvestedFrom": "171 Save as XML exports; the three rows dated 2026-10-01 come from 4 further exports plus one step set constructed at its defaults",
+  "stepNameCaveat": "step is the palette's spelling, which is also the filemaker CLI's. A Save as XML export spells some of them differently for the same id: 42 is Page Setup here and Print Setup in the export, 147 is Set Field by Name here and Set Field By Name there. Match on stepID, never on the name.",
+  "defaultOnCaveat": "defaultOn on the three rows dated 2026-10-01 is the value a step created by the filemaker CLI carries, which is not proven equal to what the Script Workspace writes when the step is added by hand."
  },
  "note": "Bit positions in a <Step>'s <Options> integer in a FileMaker Save as XML export. 'inverted' means the stored bit is the negative of the key's name.",
- "count": 161,
+ "count": 164,
  "flags": [
+  {
+   "stepID": 85,
+   "step": "Allow User Abort",
+   "bit": 17,
+   "mask": 131072,
+   "key": "on",
+   "inverted": false,
+   "defaultOn": false,
+   "confirmedInFiles": 3
+  },
   {
    "stepID": 244,
    "step": "Append PDF",
@@ -1540,6 +1552,16 @@
    "confirmedInFiles": 1
   },
   {
+   "stepID": 86,
+   "step": "Set Error Capture",
+   "bit": 17,
+   "mask": 131072,
+   "key": "on",
+   "inverted": false,
+   "defaultOn": true,
+   "confirmedInFiles": 3
+  },
+  {
    "stepID": 200,
    "step": "Set Error Logging",
    "bit": 8,
@@ -1560,6 +1582,16 @@
    "defaultOn": false,
    "label": "Specify target field",
    "confirmedInFiles": 25
+  },
+  {
+   "stepID": 168,
+   "step": "Set Layout Object Animation",
+   "bit": 17,
+   "mask": 131072,
+   "key": "on",
+   "inverted": false,
+   "defaultOn": true,
+   "confirmedInFiles": 2
   },
   {
    "stepID": 124,

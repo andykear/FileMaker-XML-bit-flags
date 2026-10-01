@@ -1,11 +1,11 @@
 {
  "provenance": {
   "exportSource": "26.0.2",
-  "measured": "2026-09-21",
+  "measured": "2026-10-01",
   "note": "The Source attribute an export carries in its FMSaveAsXML header."
  },
  "note": "A <LayoutObject> carries up to seven packed integers as <Options> ELEMENTS at different depths, and a PopoverPanel additionally carries an Options ATTRIBUTE on its own tag. 805306368 on the object itself is anchors.left + anchors.top and nothing else.",
- "count": 41,
+ "count": 43,
  "flags": [
   {
    "path": "LayoutObject",
@@ -297,11 +297,29 @@
   },
   {
    "path": "LayoutObject/Portal",
+   "bit": 3,
+   "mask": 8,
+   "key": "sort",
+   "objectType": "portal",
+   "inverted": false,
+   "note": "Bit 3 is the Sort portal records checkbox, not the presence of a SortSpecification. Across 338 portals in 4 exports the bit was never set without a SortList, but 17 of 217 stored sorts had the bit clear: FileMaker keeps the sort order after the box is unticked."
+  },
+  {
+   "path": "LayoutObject/Portal",
    "bit": 4,
    "mask": 16,
    "key": "resetScrollBarOnExit",
    "objectType": "portal",
    "inverted": true
+  },
+  {
+   "path": "LayoutObject/Portal",
+   "bit": 7,
+   "mask": 128,
+   "key": "filter",
+   "objectType": "portal",
+   "inverted": false,
+   "note": "Bit 7 is the Filter portal records checkbox, not the presence of the Portal's Calculation child. Same 338 portals: the bit was never set without a filter formula, but 45 of 157 stored formulas had the bit clear. Reading the element instead of the bit reports filters FileMaker is not applying."
   },
   {
    "path": "LayoutObject/SlideControl",
