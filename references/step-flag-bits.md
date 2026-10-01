@@ -9,6 +9,7 @@ Bit positions in a `<Step>` element's `<Options>` integer in a Save as XML expor
 
 | Step | id | bit | mask | key | label | sense | default | files |
 |---|---:|---:|---:|---|---|:-:|---|---:|
+| Allow User Abort | 85 | 17 | 131072 | `on` | — | = | off | 3 |
 | Append PDF | 244 | 9 | 512 | `createFolders` | Create folders | = | off | 1 |
 | Change Password | 83 | 7 | 128 | `withDialog` | With dialog | ! | on | 3 |
 | Check Selection | 18 | 12 | 4096 | `select` | Select | = | on | 6 |
@@ -149,14 +150,16 @@ Bit positions in a `<Step>` element's `<Options>` integer in a Save as XML expor
 | Save a Copy as Add-on Package | 96 | 18 | 262144 | `replaceUuids` | Replace UUIDs | = | off | 1 |
 | Save a Copy as XML | 3 | 8 | 256 | `includeDetailsForAnalysisTools` | Include details for analysis tools | = | off | 3 |
 | Save a Copy as XML | 3 | 9 | 512 | `saveEachLayoutObjectsBinaryDataUnderItsNode` | Save each layout object's binary data under its node | = | off | 2 |
-| Save a Copy as XML | 3 | 15 | 32768 | — | Specify options as JSON | — | — | 2 |
+| Save a Copy as XML | 3 | 15 | 32768 | `None` | Specify options as JSON | = | off | 2 |
 | Select Window | 123 | 31 | 2147483648 | `currentFileOnly` | — | = | on | — |
 | Send Mail | 63 | 7 | 128 | `withDialog` | — | ! | off | — |
 | Set AI Call Logging | 217 | 9 | 512 | `verbose` | Verbose | = | off | 1 |
 | Set AI Call Logging | 217 | 10 | 1024 | `truncateMessages` | Truncate Messages | = | off | 1 |
 | Set AI Call Logging | 217 | 17 | 131072 | `enabled` | enabled | = | off | 1 |
+| Set Error Capture | 86 | 17 | 131072 | `on` | — | = | on | 3 |
 | Set Error Logging | 200 | 8 | 256 | `enabled` | enabled | = | off | 5 |
 | Set Field by Name | 147 | 27 | 134217728 | `specifyTargetField` | Specify target field | = | off | 25 |
+| Set Layout Object Animation | 168 | 17 | 131072 | `on` | — | = | on | 2 |
 | Set Window Title | 124 | 31 | 2147483648 | `currentFileOnly` | — | = | on | — |
 | Set Zoom Level | 97 | 19 | 524288 | `lock` | Lock | = | off | 24 |
 | Show/Hide Menubar | 166 | 19 | 524288 | `lock` | Lock | = | off | 29 |
@@ -180,3 +183,42 @@ Seven booleans on Show Custom Dialog (`input1Password`, `input2Password`, `input
 ## Unexplained
 
 Bit 14 on Save Records as PDF (144) is set by default and is not accounted for.
+
+## Results that are not flag rows
+
+**Bit 14 is not a general "this step carries a calculation" flag.** It reads like
+one — on `Set Variable` it is clear for a name-only step and set as soon as a value
+or a repetition is given, and on `Set Field by Name` it is clear with no calculation
+and set with one. Tested across 60,987 step instances in five exports, though, the
+reading holds for 60,370 and fails for 617, and the failures are not noise: they
+concentrate in steps whose parameter is a field reference rather than a calculation
+(`Go to Field` 261 of 261 against it, `Export Field Contents` 166 of 168). Treat
+bit 14 as per-step and measure it per step.
+
+**Bit 25 carries two different meanings.** It is `collapsed`, the script editor's
+fold state, on the control steps — `If`, `Else`, `Else If`, `Loop`, `Open
+Transaction`, `Undo/Redo`. It is `restore` on steps holding a saved specification —
+`Sort Records`, `Perform Find`, `Print`, `Print Setup`, `Save Records as Excel`,
+`Save Records as PDF`. Both are normal sense. A decoder that names bit 25 once
+globally is wrong for one group or the other.
+
+**Not every checkbox in a step's dialog lives in the `<Options>` word.** `Show
+Custom Dialog` writes `Commit` (685 true, 2,429 false) and `Password` (9 true, 27
+false) as `<Boolean>` elements with no `id` attribute, and no bit in the word
+correlates with either value. They are stored outside it. A missing bit is not
+always a gap in this corpus.
+
+**Bit 16 is set on `Allow User Abort`, `Set Error Capture` and `Set Layout Object
+Animation` whatever the step's On/Off parameter says**, including on a step created
+at its defaults. It is structural rather than a setting, and what it records is not
+established.
+
+**A type-less `<Boolean>` with an `id` is the step's single On/Off parameter.**
+Three steps use that shape, all on bit 17, all normal sense. The absent `type`
+attribute is why these three had no label and were missed by a harvest keyed on it.
+
+**The step's name is not a stable key; its id is.** `Step` above is the palette's
+spelling. A Save as XML export spells some steps differently for the same id — 42 is
+Page Setup here and `Print Setup` in the export, 147 is Set Field by Name here and
+`Set Field By Name` there. Two rows were briefly added twice in this corpus by
+matching on the name, which is what prompted the note.

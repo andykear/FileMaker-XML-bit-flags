@@ -41,11 +41,21 @@ is one of them, named by its path within the object.
 
 ## `LayoutObject/Portal`
 
+
 | bit | mask | key | object type | sense |
 |---:|---:|---|---|:-:|
 | 0 | 1 | `allowVerticalScrolling` | portal | = |
 | 2 | 4 | `allowDelete` | portal | = |
+| 3 | 8 | `sort` | portal | = |
 | 4 | 16 | `resetScrollBarOnExit` | portal | ! |
+| 7 | 128 | `filter` | portal | = |
+
+Bits 3 and 7 are the two checkboxes in the portal setup dialog, not the presence of
+the elements they control. FileMaker keeps a portal's sort order and filter formula in
+the file after either box is unticked. Across 338 portals in four exports neither bit
+was ever set without its element, but 17 of 217 stored sorts and 45 of 157 stored
+filters had the bit clear. A tool that reads the element rather than the bit reports a
+filter FileMaker is not applying.
 
 ## `LayoutObject/External`
 
