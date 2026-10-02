@@ -13,12 +13,12 @@ FileMaker stores many settings as packed decimal numbers. An export gives you
 |---|---:|---|
 | `data/step-flags.json` | 164 | Script step `<Options>`, 102 step types |
 | `data/layout-flags.json` | 27 | A layout's own `<Options>`, 36 bits wide |
-| `data/layout-object-flags.json` | 43 | `<LayoutObject>`, its six nested integers, and a popover's own attribute |
+| `data/layout-object-flags.json` | 47 | `<LayoutObject>`, its six nested integers, and a popover's own attribute |
 | `data/part-flags.json` | 4 | The `Options` attribute on a part's `<Definition>` |
 | `references/*.md` | | The same, as tables |
 | `SKILL.md` | | Rules for decoding correctly |
 
-238 flags in total.
+242 flags in total.
 
 ## Five facts
 
