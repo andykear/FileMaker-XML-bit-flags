@@ -1,11 +1,11 @@
 {
  "provenance": {
   "exportSource": "26.0.2",
-  "measured": "2026-10-01",
+  "measured": "2026-10-02",
   "note": "The Source attribute an export carries in its FMSaveAsXML header."
  },
  "note": "A <LayoutObject> carries up to seven packed integers as <Options> ELEMENTS at different depths, and a PopoverPanel additionally carries an Options ATTRIBUTE on its own tag. 805306368 on the object itself is anchors.left + anchors.top and nothing else.",
- "count": 43,
+ "count": 47,
  "flags": [
   {
    "path": "LayoutObject",
@@ -193,11 +193,29 @@
   },
   {
    "path": "LayoutObject/Field",
+   "bit": 2,
+   "mask": 4,
+   "key": "browseEntryViewOnly",
+   "objectType": "field",
+   "inverted": false,
+   "note": "Browse-mode and Find-mode field entry are each a two-bit enum, not a single flag: the low bit alone is View Only, the high bit alone is Select Only, and both together is Set by Calculation. Browse uses bits 2 and 24, Find uses bits 4 and 25. Measured on nine field objects differing by one entry state each, read from the Field element's own Options rather than the LayoutObject's."
+  },
+  {
+   "path": "LayoutObject/Field",
    "bit": 3,
    "mask": 8,
    "key": "allowEditingOfValueList",
    "objectType": "field",
    "inverted": false
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 4,
+   "mask": 16,
+   "key": "findEntryViewOnly",
+   "objectType": "field",
+   "inverted": false,
+   "note": "Browse-mode and Find-mode field entry are each a two-bit enum, not a single flag: the low bit alone is View Only, the high bit alone is Select Only, and both together is Set by Calculation. Browse uses bits 2 and 24, Find uses bits 4 and 25. Measured on nine field objects differing by one entry state each, read from the Field element's own Options rather than the LayoutObject's."
   },
   {
    "path": "LayoutObject/Field",
@@ -278,6 +296,24 @@
    "key": "overrideDataFormattingWithValueList",
    "objectType": "field",
    "inverted": true
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 24,
+   "mask": 16777216,
+   "key": "browseEntrySelectOnly",
+   "objectType": "field",
+   "inverted": false,
+   "note": "Browse-mode and Find-mode field entry are each a two-bit enum, not a single flag: the low bit alone is View Only, the high bit alone is Select Only, and both together is Set by Calculation. Browse uses bits 2 and 24, Find uses bits 4 and 25. Measured on nine field objects differing by one entry state each, read from the Field element's own Options rather than the LayoutObject's."
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 25,
+   "mask": 33554432,
+   "key": "findEntrySelectOnly",
+   "objectType": "field",
+   "inverted": false,
+   "note": "Browse-mode and Find-mode field entry are each a two-bit enum, not a single flag: the low bit alone is View Only, the high bit alone is Select Only, and both together is Set by Calculation. Browse uses bits 2 and 24, Find uses bits 4 and 25. Measured on nine field objects differing by one entry state each, read from the Field element's own Options rather than the LayoutObject's."
   },
   {
    "path": "LayoutObject/Portal",
