@@ -23,11 +23,14 @@ is one of them, named by its path within the object.
 
 ## `LayoutObject/Field`
 
+
 | bit | mask | key | object type | sense |
 |---:|---:|---|---|:-:|
 | 0 | 1 | `allowEntryOfOtherValues` | field | = |
 | 1 | 2 | `selectContentsOnEntry` | field | = |
+| 2 | 4 | `browseEntryViewOnly` | field | = |
 | 3 | 8 | `allowEditingOfValueList` | field | = |
+| 4 | 16 | `findEntryViewOnly` | field | = |
 | 5 | 32 | `exitOnTab` | field | = |
 | 6 | 64 | `exitOnReturn` | field | = |
 | 7 | 128 | `exitOnEnter` | field | = |
@@ -38,6 +41,13 @@ is one of them, named by its path within the object.
 | 15 | 32768 | `quickFind` | field | ! |
 | 16 | 65536 | `showPlaceholderInFindMode` | field | ! |
 | 20 | 1048576 | `overrideDataFormattingWithValueList` | field | ! |
+| 24 | 16777216 | `browseEntrySelectOnly` | field | = |
+| 25 | 33554432 | `findEntrySelectOnly` | field | = |
+
+Field entry is two two-bit enums rather than four independent flags. In each mode
+the low bit alone is View Only, the high bit alone is Select Only, and both bits
+together is Set by Calculation. Browse mode uses bits 2 and 24, Find mode bits 4
+and 25. A plain edit box reads 32, not 0, so compare against that baseline.
 
 ## `LayoutObject/Portal`
 
