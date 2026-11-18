@@ -21,9 +21,9 @@ layout part flags.
    key's name. `withDialog` on bit 7 is FileMaker's `NoInteract`: bit set means the dialog is
    suppressed. Forty-seven flags across the four files are stored this way.
 
-3. **A layout object has seven integers.** Read all of them, at these paths:
+3. **A layout object has eight integers.** Read all of them, at these paths:
    `LayoutObject`, `LayoutObject/Field`, `LayoutObject/Portal`, `LayoutObject/External`,
-   `LayoutObject/SlideControl`, `LayoutObject/TabControl`,
+   `LayoutObject/Button`, `LayoutObject/SlideControl`, `LayoutObject/TabControl`,
    `LayoutObject/ExtendedAttributes/Formatting/Graphic`.
 
 4. **Use 64-bit arithmetic.** A layout's own `<Options>` is 36 bits wide. JavaScript's `^`,
@@ -45,7 +45,12 @@ layout part flags.
    well as names.
 
 7. **Report unexplained bits as unexplained.** A tidy table implies completeness it has not
-   earned. Bit 14 on Save Records as PDF and bit 1 on Insert from URL are not accounted for.
+   earned. Bit 14 on Save Records as PDF and bit 1 on Insert from URL are not accounted for,
+   nor are bits 0 and 1 of a button's `Button` options or bits 7 and 15 of a web viewer's
+   `External` options. An entry with `"identified": false` is a known unknown.
+
+8. **`"since": "26.1"` marks an option FileMaker 26.1 added** (`[26.1+]` in `references/`).
+   A file only carries it if FileMaker 26.1 or later set it.
 
 ## Do not use this for clipboard XML
 

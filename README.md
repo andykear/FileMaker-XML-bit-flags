@@ -13,19 +13,22 @@ FileMaker stores many settings as packed decimal numbers. An export gives you
 |---|---:|---|
 | `data/step-flags.json` | 164 | Script step `<Options>`, 102 step types |
 | `data/layout-flags.json` | 27 | A layout's own `<Options>`, 36 bits wide |
-| `data/layout-object-flags.json` | 47 | `<LayoutObject>`, its six nested integers, and a popover's own attribute |
+| `data/layout-object-flags.json` | 54 | `<LayoutObject>`, its seven nested integers, and a popover's own attribute |
 | `data/part-flags.json` | 4 | The `Options` attribute on a part's `<Definition>` |
 | `references/*.md` | | The same, as tables |
 | `SKILL.md` | | Rules for decoding correctly |
 
-242 flags in total.
+249 flags in total.
+
+**FileMaker 26.1.** Six new rows, tagged `[26.1+]` in the tables and `"since": "26.1"` in the
+JSON where the option is new, plus a button's own `Button` integer, which earlier versions also write.
 
 ## Five facts
 
-**A layout object holds seven packed integers, not one.** Its own, plus separate ones inside
-`Field`, `Portal`, `External`, `SlideControl`, `TabControl` and
+**A layout object holds eight packed integers, not one.** Its own, plus separate ones inside
+`Field`, `Portal`, `External`, `Button`, `SlideControl`, `TabControl` and
 `ExtendedAttributes/Formatting/Graphic`. Reading only the outermost finds 11 of 43 properties.
-`quickFind` is in the one inside `Field`. A popover panel carries an eighth value as an
+`quickFind` is in the one inside `Field`. A popover panel carries a ninth value as an
 `Options=` attribute on its own tag rather than as an element.
 
 **Forty-seven flags are stored inverted.** The bit is the negative of the property name.
@@ -52,7 +55,7 @@ object with no anchors carries `0`.
 
 ## Scope
 
-Mapped: script step options, a layout's own options, the seven integers and one attribute on
+Mapped: script step options, a layout's own options, the eight integers and one attribute on
 a layout object, and the pagination bits on a layout part.
 
 Not in any of these integers: seven booleans on Show Custom Dialog, and a part's
@@ -61,8 +64,9 @@ where they belong rather than omitted.
 
 Not mapped: the accounts catalog.
 
-Unexplained: bit 14 on Save Records as PDF, bit 1 on Insert from URL, and bit 0 of a popover
-panel's Options attribute.
+Unexplained: bit 14 on Save Records as PDF, bit 1 on Insert from URL, bit 0 of a popover
+panel's Options attribute, bits 0 and 1 of a button's `Button` options, and bits 7 and 15 of a
+web viewer's `External` options.
 
 ## Not for clipboard XML
 
@@ -84,7 +88,7 @@ overlap the probed rows agree with them.
 The bits listed above as unexplained are neither observed nor inferred — they are simply not
 accounted for, and are listed rather than omitted.
 
-Exports carrying `Source="26.0.2"`.
+Exports carrying `Source="26.0.2"`. The 26.1 rows were measured on a FileMaker Pro 26.1 export.
 
 ---
 
