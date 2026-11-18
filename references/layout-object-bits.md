@@ -1,9 +1,12 @@
 # Layout object option bits
 
-A `<LayoutObject>` carries up to seven packed integers at different depths. Each section below
+A `<LayoutObject>` carries up to eight packed integers at different depths. Each section below
 is one of them, named by its path within the object.
 
 `sense` is `=` when setting the property sets the bit, and `!` when setting it clears the bit.
+
+`[26.1+]` marks an option FileMaker 26.1 added (`"since": "26.1"` in the JSON). A file only
+carries it if FileMaker 26.1 or later set it.
 
 ## `LayoutObject`
 
@@ -41,6 +44,8 @@ is one of them, named by its path within the object.
 | 15 | 32768 | `quickFind` | field | ! |
 | 16 | 65536 | `showPlaceholderInFindMode` | field | ! |
 | 20 | 1048576 | `overrideDataFormattingWithValueList` | field | ! |
+| 22 | 4194304 | `displaySingleCheckboxWithoutValue` `[26.1+]` | field | = |
+| 23 | 8388608 | `showIndicatorForClippedContents` `[26.1+]` | field | = |
 | 24 | 16777216 | `browseEntrySelectOnly` | field | = |
 | 25 | 33554432 | `findEntrySelectOnly` | field | = |
 
@@ -59,6 +64,7 @@ and 25. A plain edit box reads 32, not 0, so compare against that baseline.
 | 3 | 8 | `sort` | portal | = |
 | 4 | 16 | `resetScrollBarOnExit` | portal | ! |
 | 7 | 128 | `filter` | portal | = |
+| 10 | 1024 | `placeNewRecordRowAtTop` `[26.1+]` | portal | = |
 
 Bits 3 and 7 are the two checkboxes in the portal setup dialog, not the presence of
 the elements they control. FileMaker keeps a portal's sort order and filter formula in
@@ -77,6 +83,38 @@ filter FileMaker is not applying.
 | 3 | 8 | `showStatusMessages` | webViewer | = |
 | 5 | 32 | `encodeUrl` | webViewer | ! |
 | 6 | 64 | `allowJavaScriptToPerformScripts` | webViewer | = |
+| 7 | 128 | *not identified* | webViewer | ? |
+| 8 | 256 | `allowJavaScriptToExecuteDataApiRequests` | webViewer | = |
+| 15 | 32768 | *not identified* | webViewer | ? |
+
+Bits 7 and 8 were measured in FileMaker 26.1 by setting the options with a tool, and the Web
+Viewer Setup dialog was not checked. Setting `allowJavaScriptToExecuteDataApiRequests` set bit
+8 alone. Setting `allowJavaScriptToPerformScripts` set bit 7 as well as bit 6. Across 566 web
+viewers in exports from FileMaker 21 to 26.0, 87 of them with bit 6, neither bit 7 nor bit 8 is
+ever set. In FileMaker 26.1.1 exports bit 7 is set on 168 of the 190 viewers with bit 6, and
+never without it. Most of those files were built by tools.
+
+Bit 15 is used in real files and is not identified. Across 321 web viewers in 55 exports it is
+set on 189 and clear on 132, and the same combination of the six known bits occurs both with it
+and without — so it is independent of them rather than a side effect.
+
+Three explanations have been ruled out. It is not a marker for the version that wrote the file:
+twelve of the exports contain web viewers both with and without it. It does not distinguish a
+literal address from a calculated one: objects carrying a fixed URL, a quoted calculation and a
+field reference all read the same. It is not the Data API option, which is bit 8: three web
+viewers created in FileMaker 26.1, one with default settings, one with the Data API option on
+and one with perform scripts on, all carry bit 15.
+
+## `LayoutObject/Button`
+
+| bit | mask | key | object type | sense |
+|---:|---:|---|---|:-:|
+| 2 | 4 | `iconCalculationInEffect` `[26.1+]` | button | = |
+
+Earlier versions write this integer too. Bit 2 is set while a calculated icon is in effect,
+and the formula is then in `<IconData type="4">` as `<SVGCalc>` (clipboard XML spells it
+`SvgCalc`). Bits 0 and 1 are used in real files and are not identified: in every export from
+FileMaker 21 to 26.0 checked, the value is 0, 2 or 3, never 1.
 
 ## `LayoutObject/SlideControl`
 
