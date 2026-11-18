@@ -4,8 +4,8 @@
   "measured": "2026-10-02",
   "note": "The Source attribute an export carries in its FMSaveAsXML header."
  },
- "note": "A <LayoutObject> carries up to seven packed integers as <Options> ELEMENTS at different depths, and a PopoverPanel additionally carries an Options ATTRIBUTE on its own tag. 805306368 on the object itself is anchors.left + anchors.top and nothing else.",
- "count": 47,
+ "note": "A <LayoutObject> carries up to eight packed integers as <Options> ELEMENTS at different depths, and a PopoverPanel additionally carries an Options ATTRIBUTE on its own tag. 805306368 on the object itself is anchors.left + anchors.top and nothing else.",
+ "count": 54,
  "flags": [
   {
    "path": "LayoutObject",
@@ -176,6 +176,63 @@
    "inverted": false
   },
   {
+   "path": "LayoutObject/External",
+   "bit": 7,
+   "mask": 128,
+   "key": null,
+   "objectType": "webViewer",
+   "inverted": null,
+   "identified": false,
+   "note": "Set alongside bit 6 when a tool turned on allowJavaScriptToPerformScripts in FileMaker 26.1; the Web Viewer Setup dialog was not checked.",
+   "evidence": {
+    "webViewersBefore26_1": 566,
+    "withBit6Before26_1": 87,
+    "setBefore26_1": 0,
+    "withBit6In26_1_1": 190,
+    "setIn26_1_1": 168,
+    "setWithoutBit6": 0
+   }
+  },
+  {
+   "path": "LayoutObject/External",
+   "bit": 8,
+   "mask": 256,
+   "key": "allowJavaScriptToExecuteDataApiRequests",
+   "objectType": "webViewer",
+   "inverted": false,
+   "note": "Measured by setting the option with a tool in FileMaker 26.1; the Web Viewer Setup dialog was not checked. Not set on any web viewer in exports from earlier versions."
+  },
+  {
+   "path": "LayoutObject/External",
+   "bit": 15,
+   "mask": 32768,
+   "key": null,
+   "objectType": "webViewer",
+   "inverted": null,
+   "identified": false,
+   "evidence": {
+    "objectsSet": 189,
+    "objectsClear": 132,
+    "objectsTotal": 321,
+    "exports": 55,
+    "ruledOut": [
+     "writer version \u2014 12 exports contain both",
+     "literal vs calculated address \u2014 identical either way",
+     "the Data API option, which is bit 8 \u2014 web viewers created in 26.1 with default settings, with the Data API option on and with perform-scripts on all carry bit 15"
+    ]
+   }
+  },
+  {
+   "path": "LayoutObject/Button",
+   "bit": 2,
+   "mask": 4,
+   "key": "iconCalculationInEffect",
+   "objectType": "button",
+   "inverted": false,
+   "since": "26.1",
+   "note": "Set while a calculated icon is in effect; the formula is then in Button/IconData type=\"4\" as <SVGCalc>. Bits 0 and 1 of this integer are used in real files and are not identified: the value is 0, 2 or 3 in every earlier export checked."
+  },
+  {
    "path": "LayoutObject/Field",
    "bit": 0,
    "mask": 1,
@@ -299,6 +356,24 @@
   },
   {
    "path": "LayoutObject/Field",
+   "bit": 22,
+   "mask": 4194304,
+   "key": "displaySingleCheckboxWithoutValue",
+   "objectType": "field",
+   "inverted": false,
+   "since": "26.1"
+  },
+  {
+   "path": "LayoutObject/Field",
+   "bit": 23,
+   "mask": 8388608,
+   "key": "showIndicatorForClippedContents",
+   "objectType": "field",
+   "inverted": false,
+   "since": "26.1"
+  },
+  {
+   "path": "LayoutObject/Field",
    "bit": 24,
    "mask": 16777216,
    "key": "browseEntrySelectOnly",
@@ -358,6 +433,15 @@
    "note": "Bit 7 is the Filter portal records checkbox, not the presence of the Portal's Calculation child. Same 338 portals: the bit was never set without a filter formula, but 45 of 157 stored formulas had the bit clear. Reading the element instead of the bit reports filters FileMaker is not applying."
   },
   {
+   "path": "LayoutObject/Portal",
+   "bit": 10,
+   "mask": 1024,
+   "key": "placeNewRecordRowAtTop",
+   "objectType": "portal",
+   "inverted": false,
+   "since": "26.1"
+  },
+  {
    "path": "LayoutObject/SlideControl",
    "bit": 0,
    "mask": 1,
@@ -390,5 +474,9 @@
    "inverted": true,
    "note": "An ATTRIBUTE on the <LayoutObject> tag, not the <Options> element inside it. Only PopoverPanel objects carry it."
   }
- ]
+ ],
+ "provenance26_1": {
+  "measured": "2026-11-18",
+  "note": "Rows carrying since 26.1, and External bits 7 and 8, were measured on a FileMaker Pro 26.1 export."
+ }
 }
